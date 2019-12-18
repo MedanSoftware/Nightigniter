@@ -1215,7 +1215,7 @@ class CI_Email {
 		$this->set_header('X-Sender', $this->clean_email($this->_headers['From']));
 		$this->set_header('X-Mailer', $this->useragent);
 		$this->set_header('X-Priority', $this->_priorities[$this->priority]);
-		$this->set_header('Message-ID', $this->_get_message_id());
+		(!isset($this->_headers['Message-ID']))?$this->set_header('Message-ID', $this->_get_message_id()):FALSE;
 		$this->set_header('Mime-Version', '1.0');
 	}
 
