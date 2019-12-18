@@ -167,19 +167,41 @@ if ( ! is_php('5.4'))
  */
 	if ($composer_autoload = config_item('composer_autoload'))
 	{
-		if ($composer_autoload === TRUE)
+		if (is_array($composer_autoload))
 		{
-			file_exists(APPPATH.'vendor/autoload.php')
-				? require_once(APPPATH.'vendor/autoload.php')
-				: log_message('error', '$config[\'composer_autoload\'] is set to TRUE but '.APPPATH.'vendor/autoload.php was not found.');
-		}
-		elseif (file_exists($composer_autoload))
-		{
-			require_once($composer_autoload);
+			foreach ($composer_autoload as $autoload) {
+				if ($autoload === TRUE)
+				{
+					file_exists(APPPATH.'vendor/autoload.php')
+						? require_once(APPPATH.'vendor/autoload.php')
+						: log_message('error', '$config[\'composer_autoload\'] is set to TRUE but '.APPPATH.'vendor/autoload.php was not found.');
+				}
+				elseif (file_exists($autoload))
+				{
+					require_once($autoload);
+				}
+				else
+				{
+					log_message('error', 'Could not find the specified $config[\'composer_autoload\'] path: '.$autoload);
+				}
+			}
 		}
 		else
 		{
-			log_message('error', 'Could not find the specified $config[\'composer_autoload\'] path: '.$composer_autoload);
+			if ($composer_autoload === TRUE)
+			{
+				file_exists(APPPATH.'vendor/autoload.php')
+					? require_once(APPPATH.'vendor/autoload.php')
+					: log_message('error', '$config[\'composer_autoload\'] is set to TRUE but '.APPPATH.'vendor/autoload.php was not found.');
+			}
+			elseif (file_exists($composer_autoload))
+			{
+				require_once($composer_autoload);
+			}
+			else
+			{
+				log_message('error', 'Could not find the specified $config[\'composer_autoload\'] path: '.$composer_autoload);
+			}
 		}
 	}
 
