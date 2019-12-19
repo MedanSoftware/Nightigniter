@@ -10,12 +10,13 @@ require_once(APPPATH.'libraries/RESTful/REST_Controller.php');
 
 class RESTful_API extends REST_Controller
 {
-	protected $ci;
-
+	/**
+	 * constructor
+	 */
 	public function __construct()
 	{
 		parent::__construct();
-		$this->ci =& get_instance();
+		$this->form_validation->set_data($this->{$this->request->method}());
 	}
 }
 
