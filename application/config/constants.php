@@ -99,6 +99,38 @@ defined('TABLE_PREFIX') or define('TABLE_PREFIX',(isset($db[ACTIVE_DATABASE_GROU
 
 /*
 |--------------------------------------------------------------------------
+| SSL certificate path
+|--------------------------------------------------------------------------
+| SSL Certificate for third-party application need the SSL certificate file
+*/
+defined('SSL_CERT_PATH') or define('SSL_CERT_PATH', FCPATH.'.ssl_cert');
+
+/*
+|--------------------------------------------------------------------------
+| Site data path
+|--------------------------------------------------------------------------
+| Path for site data directory
+*/
+defined('SITE_DATA_PATH') or define('SITE_DATA_PATH', FCPATH);
+
+/*
+|--------------------------------------------------------------------------
+| Assets path
+|--------------------------------------------------------------------------
+| Path to assets directory
+*/
+defined('ASSETS_PATH') or define('ASSETS_PATH', FCPATH.'assets');
+
+/*
+|--------------------------------------------------------------------------
+| Themes path
+|--------------------------------------------------------------------------
+| Path to themes (used for dynamic template)
+*/
+defined('THEMES_PATH') or define('THEMES_PATH', FCPATH.'assets'.DIRECTORY_SEPARATOR.'themes');
+
+/*
+|--------------------------------------------------------------------------
 | Display Debug backtrace
 |--------------------------------------------------------------------------
 |
