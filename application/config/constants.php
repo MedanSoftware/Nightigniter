@@ -29,6 +29,74 @@ if(isset($_SERVER['SERVER_PORT']))
 	 */
 	define('CURRENT_URL', (!empty($_SERVER['SERVER_PORT'])?$_SERVER['SERVER_PORT']==443?'https':'http':FALSE)."://".(!empty($_SERVER['SERVER_NAME'])?$_SERVER['SERVER_NAME']:FALSE).str_replace('//', '/', $_SERVER['REQUEST_URI']));
 }
+
+/*
+|--------------------------------------------------------------------------
+| Application config file
+|--------------------------------------------------------------------------
+|
+| Application config file used for dynamic application config, and then
+| application load config from this file
+|
+| Note : format for this config file is json
+*/
+defined('APP_CONFIG_FILE') or define('APP_CONFIG_FILE', APPPATH.'app.config');
+
+/*
+|--------------------------------------------------------------------------
+| Application config
+|--------------------------------------------------------------------------
+|
+| Application config data is the content from APP_CONFIG_FILE
+*/
+defined('APP_CONFIG') or define('APP_CONFIG',(file_exists(APP_CONFIG_FILE))?json_decode(file_get_contents(APP_CONFIG_FILE),TRUE):array());
+
+/*
+|--------------------------------------------------------------------------
+| Database config file
+|--------------------------------------------------------------------------
+|
+| Database config file will be used for third-party application when need
+| the database connection
+|
+| Note : format for this config file is json
+*/
+defined('DATABASE_CONFIG_FILE') or define('DATABASE_CONFIG_FILE', APPPATH.'database.config');
+
+/*
+|--------------------------------------------------------------------------
+| Active database group
+|--------------------------------------------------------------------------
+|
+| Active database group, will be used for current database
+*/
+defined('ACTIVE_DATABASE_GROUP') or define('ACTIVE_DATABASE_GROUP', (isset(APP_CONFIG['active_database']))?APP_CONFIG['active_database']:'default');
+
+/*
+|--------------------------------------------------------------------------
+| Routing config file
+|--------------------------------------------------------------------------
+|
+| Routing config file used for dynamic application routing, and then
+|
+| Note : format for this config file is json
+*/
+defined('ROUTING_CONFIG_FILE') or define('ROUTING_CONFIG_FILE', APPPATH.'routing.config');
+
+/*
+|--------------------------------------------------------------------------
+| Database - Table Prefix
+|--------------------------------------------------------------------------
+*/
+if (!file_exists($database_config = APPPATH.'config/'.ENVIRONMENT.'/database.php') && !file_exists($database_config = APPPATH.'config/database.php'))
+{
+	show_error('The configuration file database.php does not exist.');
+}
+
+include($database_config);
+
+defined('TABLE_PREFIX') or define('TABLE_PREFIX',(isset($db[ACTIVE_DATABASE_GROUP]))?$db[ACTIVE_DATABASE_GROUP]['dbprefix']:APP_INFO['name'].'_');
+
 /*
 |--------------------------------------------------------------------------
 | Display Debug backtrace
