@@ -230,8 +230,7 @@ class Application
 						array_push(
 							$data[$module_name]['themes'],
 							array_merge((!empty($theme_json))?$theme_json:array(),array(
-								'_path' => realpath(THEMES_PATH.'/'.$module.$theme_folder),
-								'_files' => directory_map(THEMES_PATH.'/'.$module.$theme_folder)
+								'_path' => realpath(THEMES_PATH.'/'.$module.$theme_folder)
 						)));
 					}
 				}
