@@ -171,9 +171,11 @@ class Template_Engine extends CI_Driver_Library
 	 */
 	public function render($page, $data = array())
 	{
-		$data['themes'] = array(
-			'seo' => $this->build_seo()
-		);
+		$data = array_merge_recursive($data, array(
+			'themes' => array(
+				'seo' => $this->build_seo()
+			)
+		));
 
 		$this->{$this->adapter}->render($page, $data);
 	}
