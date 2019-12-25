@@ -6,6 +6,37 @@
  * @author Agung Dirgantara <agungmasda29@gmail.com>
  */
 
+if (!function_exists('read_config_file'))
+{
+	/**
+	 * Read config file
+	 *
+	 * @param  string $config_file
+	 */
+	function read_config_file($config_file = APP_CONFIG_FILE)
+	{
+		return (file_exists($config_file))?json_decode(file_get_contents($config_file),TRUE):array();
+	}
+}
+
+if (!function_exists('write_config_file'))
+{
+	function write_config_file($data = array(), $old_data = array(), $file = APP_CONFIG_FILE, $merge_data = true)
+	{
+		$content = $data;
+
+		if ($merge_data)
+		{
+			if (!empty($old_data))
+			{
+				$content = array_merge($old_data, $data);
+			}
+		}
+
+		file_put_contents($file, json_encode($content, JSON_PRETTY_PRINT));
+	}
+}
+
 if (!function_exists('get_class_methods'))
 {
 	/**
