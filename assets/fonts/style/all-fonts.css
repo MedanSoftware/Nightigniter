@@ -1,0 +1,432 @@
+@font-face
+{
+	font-family:'Aclonica-Regular';
+	src:url(Aclonica\/Aclonica-Regular.ttf);
+}
+.Aclonica-Regular
+{
+	font-family:Aclonica-Regular;
+}
+@font-face
+{
+	font-family:'Akronim-Regular';
+	src:url(Akronim\/Akronim-Regular.ttf);
+}
+.Akronim-Regular
+{
+	font-family:Akronim-Regular;
+}
+@font-face
+{
+	font-family:'Aladin-Regular';
+	src:url(Aladin\/Aladin-Regular.ttf);
+}
+.Aladin-Regular
+{
+	font-family:Aladin-Regular;
+}
+@font-face
+{
+	font-family:'AlfaSlabOne-Regular';
+	src:url(Alfa_Slab_One\/AlfaSlabOne-Regular.ttf);
+}
+.AlfaSlabOne-Regular
+{
+	font-family:AlfaSlabOne-Regular;
+}
+@font-face
+{
+	font-family:'BlackOpsOne-Regular';
+	src:url(Black_Ops_One\/BlackOpsOne-Regular.ttf);
+}
+.BlackOpsOne-Regular
+{
+	font-family:BlackOpsOne-Regular;
+}
+@font-face
+{
+	font-family:'BowlbyOneSC-Regular';
+	src:url(Bowlby_One_SC\/BowlbyOneSC-Regular.ttf);
+}
+.BowlbyOneSC-Regular
+{
+	font-family:BowlbyOneSC-Regular;
+}
+@font-face
+{
+	font-family:'BungeeInline-Regular';
+	src:url(Bungee_Inline\/BungeeInline-Regular.ttf);
+}
+.BungeeInline-Regular
+{
+	font-family:BungeeInline-Regular;
+}
+@font-face
+{
+	font-family:'BungeeShade-Regular';
+	src:url(Bungee_Shade\/BungeeShade-Regular.ttf);
+}
+.BungeeShade-Regular
+{
+	font-family:BungeeShade-Regular;
+}
+@font-face
+{
+	font-family:'Cheque-Black';
+	src:url(cheque\/Cheque-Black.otf);
+}
+.Cheque-Black
+{
+	font-family:Cheque-Black;
+}
+@font-face
+{
+	font-family:'Cheque-Regular';
+	src:url(cheque\/Cheque-Regular.otf);
+}
+.Cheque-Regular
+{
+	font-family:Cheque-Regular;
+}
+@font-face
+{
+	font-family:'Cookit-Regular';
+	src:url(cookit\/Cookit-Regular.otf);
+}
+.Cookit-Regular
+{
+	font-family:Cookit-Regular;
+}
+@font-face
+{
+	font-family:'Cookit-Regular';
+	src:url(cookit\/Cookit-Regular.ttf);
+}
+.Cookit-Regular
+{
+	font-family:Cookit-Regular;
+}
+@font-face
+{
+	font-family:'Electrolize-Regular';
+	src:url(Electrolize\/Electrolize-Regular.ttf);
+}
+.Electrolize-Regular
+{
+	font-family:Electrolize-Regular;
+}
+@font-face
+{
+	font-family:'EmblemaOne-Regular';
+	src:url(Emblema_One\/EmblemaOne-Regular.ttf);
+}
+.EmblemaOne-Regular
+{
+	font-family:EmblemaOne-Regular;
+}
+@font-face
+{
+	font-family:'Ewert-Regular';
+	src:url(Ewert\/Ewert-Regular.ttf);
+}
+.Ewert-Regular
+{
+	font-family:Ewert-Regular;
+}
+@font-face
+{
+	font-family:'Fascinate-Regular';
+	src:url(Fascinate\/Fascinate-Regular.ttf);
+}
+.Fascinate-Regular
+{
+	font-family:Fascinate-Regular;
+}
+@font-face
+{
+	font-family:'FascinateInline-Regular';
+	src:url(Fascinate_Inline\/FascinateInline-Regular.ttf);
+}
+.FascinateInline-Regular
+{
+	font-family:FascinateInline-Regular;
+}
+@font-face
+{
+	font-family:'FasterOne-Regular';
+	src:url(Faster_One\/FasterOne-Regular.ttf);
+}
+.FasterOne-Regular
+{
+	font-family:FasterOne-Regular;
+}
+@font-face
+{
+	font-family:'FontdinerSwanky-Regular';
+	src:url(Fontdiner_Swanky\/FontdinerSwanky-Regular.ttf);
+}
+.FontdinerSwanky-Regular
+{
+	font-family:FontdinerSwanky-Regular;
+}
+@font-face
+{
+	font-family:'Geostar-Regular';
+	src:url(Geostar\/Geostar-Regular.ttf);
+}
+.Geostar-Regular
+{
+	font-family:Geostar-Regular;
+}
+@font-face
+{
+	font-family:'GiveYouGlory';
+	src:url(Give_You_Glory\/GiveYouGlory.ttf);
+}
+.GiveYouGlory
+{
+	font-family:GiveYouGlory;
+}
+@font-face
+{
+	font-family:'Hanalei-Regular';
+	src:url(Hanalei\/Hanalei-Regular.ttf);
+}
+.Hanalei-Regular
+{
+	font-family:Hanalei-Regular;
+}
+@font-face
+{
+	font-family:'Italianno-Regular';
+	src:url(Italianno\/Italianno-Regular.ttf);
+}
+.Italianno-Regular
+{
+	font-family:Italianno-Regular;
+}
+@font-face
+{
+	font-family:'LilyScriptOne-Regular';
+	src:url(Lily_Script_One\/LilyScriptOne-Regular.ttf);
+}
+.LilyScriptOne-Regular
+{
+	font-family:LilyScriptOne-Regular;
+}
+@font-face
+{
+	font-family:'Limelight-Regular';
+	src:url(Limelight\/Limelight-Regular.ttf);
+}
+.Limelight-Regular
+{
+	font-family:Limelight-Regular;
+}
+@font-face
+{
+	font-family:'Lobster-Regular';
+	src:url(Lobster\/Lobster-Regular.ttf);
+}
+.Lobster-Regular
+{
+	font-family:Lobster-Regular;
+}
+@font-face
+{
+	font-family:'Marlboro';
+	src:url(marlboro\/Marlboro.ttf);
+}
+.Marlboro
+{
+	font-family:Marlboro;
+}
+@font-face
+{
+	font-family:'Monoton-Regular';
+	src:url(Monoton\/Monoton-Regular.ttf);
+}
+.Monoton-Regular
+{
+	font-family:Monoton-Regular;
+}
+@font-face
+{
+	font-family:'MysteryQuest-Regular';
+	src:url(Mystery_Quest\/MysteryQuest-Regular.ttf);
+}
+.MysteryQuest-Regular
+{
+	font-family:MysteryQuest-Regular;
+}
+@font-face
+{
+	font-family:'Nosifer-Regular';
+	src:url(Nosifer\/Nosifer-Regular.ttf);
+}
+.Nosifer-Regular
+{
+	font-family:Nosifer-Regular;
+}
+@font-face
+{
+	font-family:'OleoScript-Bold';
+	src:url(Oleo_Script\/OleoScript-Bold.ttf);
+}
+.OleoScript-Bold
+{
+	font-family:OleoScript-Bold;
+}
+@font-face
+{
+	font-family:'OleoScript-Regular';
+	src:url(Oleo_Script\/OleoScript-Regular.ttf);
+}
+.OleoScript-Regular
+{
+	font-family:OleoScript-Regular;
+}
+@font-face
+{
+	font-family:'Parisienne-Regular';
+	src:url(Parisienne\/Parisienne-Regular.ttf);
+}
+.Parisienne-Regular
+{
+	font-family:Parisienne-Regular;
+}
+@font-face
+{
+	font-family:'PetitFormalScript-Regular';
+	src:url(Petit_Formal_Script\/PetitFormalScript-Regular.ttf);
+}
+.PetitFormalScript-Regular
+{
+	font-family:PetitFormalScript-Regular;
+}
+@font-face
+{
+	font-family:'PirataOne-Regular';
+	src:url(Pirata_One\/PirataOne-Regular.ttf);
+}
+.PirataOne-Regular
+{
+	font-family:PirataOne-Regular;
+}
+@font-face
+{
+	font-family:'PressStart2P-Regular';
+	src:url(Press_Start_2P\/PressStart2P-Regular.ttf);
+}
+.PressStart2P-Regular
+{
+	font-family:PressStart2P-Regular;
+}
+@font-face
+{
+	font-family:'RacingSansOne-Regular';
+	src:url(Racing_Sans_One\/RacingSansOne-Regular.ttf);
+}
+.RacingSansOne-Regular
+{
+	font-family:RacingSansOne-Regular;
+}
+@font-face
+{
+	font-family:'Rancho-Regular';
+	src:url(Rancho\/Rancho-Regular.ttf);
+}
+.Rancho-Regular
+{
+	font-family:Rancho-Regular;
+}
+@font-face
+{
+	font-family:'Righteous-Regular';
+	src:url(Righteous\/Righteous-Regular.ttf);
+}
+.Righteous-Regular
+{
+	font-family:Righteous-Regular;
+}
+@font-face
+{
+	font-family:'RougeScript-Regular';
+	src:url(Rouge_Script\/RougeScript-Regular.ttf);
+}
+.RougeScript-Regular
+{
+	font-family:RougeScript-Regular;
+}
+@font-face
+{
+	font-family:'Sancreek-Regular';
+	src:url(Sancreek\/Sancreek-Regular.ttf);
+}
+.Sancreek-Regular
+{
+	font-family:Sancreek-Regular;
+}
+@font-face
+{
+	font-family:'SigmarOne-Regular';
+	src:url(Sigmar_One\/SigmarOne-Regular.ttf);
+}
+.SigmarOne-Regular
+{
+	font-family:SigmarOne-Regular;
+}
+@font-face
+{
+	font-family:'Spirax-Regular';
+	src:url(Spirax\/Spirax-Regular.ttf);
+}
+.Spirax-Regular
+{
+	font-family:Spirax-Regular;
+}
+@font-face
+{
+	font-family:'StintUltraCondensed-Regular';
+	src:url(Stint_Ultra_Condensed\/StintUltraCondensed-Regular.ttf);
+}
+.StintUltraCondensed-Regular
+{
+	font-family:StintUltraCondensed-Regular;
+}
+@font-face
+{
+	font-family:'Ultra-Regular';
+	src:url(Ultra\/Ultra-Regular.ttf);
+}
+.Ultra-Regular
+{
+	font-family:Ultra-Regular;
+}
+@font-face
+{
+	font-family:'Unlock-Regular';
+	src:url(Unlock\/Unlock-Regular.ttf);
+}
+.Unlock-Regular
+{
+	font-family:Unlock-Regular;
+}
+@font-face
+{
+	font-family:'VastShadow-Regular';
+	src:url(Vast_Shadow\/VastShadow-Regular.ttf);
+}
+.VastShadow-Regular
+{
+	font-family:VastShadow-Regular;
+}
+@font-face
+{
+	font-family:'Yesteryear-Regular';
+	src:url(Yesteryear\/Yesteryear-Regular.ttf);
+}
+.Yesteryear-Regular
+{
+	font-family:Yesteryear-Regular;
+}
