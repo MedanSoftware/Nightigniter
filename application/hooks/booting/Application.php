@@ -130,7 +130,7 @@ class Application
 
 		if (!isset($data['site_data_folder']))
 		{
-			$SD = APP_INFO['name'].'_SiteData_'.time();
+			$SD = str_replace(' ', '_', APP_INFO['name']).'_SiteData_'.time();
 			(!is_dir(SITE_DATA_PATH.$SD))?mkdir(SITE_DATA_PATH.$SD ,0777 ,TRUE):FALSE;
 
 			$this->write_config(array('site_data_folder' => $SD), $data);
@@ -162,17 +162,17 @@ class Application
 	{
 		$data = $this->read_config();
 
-		if (!isset($data['ENVIRONMENT']))
+		if (!isset($data['environment']))
 		{
-			$this->write_config(array('ENVIRONMENT' => ENVIRONMENT), $data);
+			$this->write_config(array('environment' => ENVIRONMENT), $data);
 			log_message('info','application environment intialized');
 		}
 		else
 		{
-			if ($data['ENVIRONMENT'] !== ENVIRONMENT)
+			if ($data['environment'] !== ENVIRONMENT)
 			{
-				log_message('info','application environment changed from : '.APP_CONFIG['ENVIRONMENT'].' to '.ENVIRONMENT);
-				$this->write_config(array('ENVIRONMENT' => ENVIRONMENT), $data);
+				log_message('info','application environment changed from : '.APP_CONFIG['environment'].' to '.ENVIRONMENT);
+				$this->write_config(array('environment' => ENVIRONMENT), $data);
 			}
 		}
 	}
