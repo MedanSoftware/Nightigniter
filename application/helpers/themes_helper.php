@@ -80,5 +80,5 @@ if (!function_exists('active_theme'))
 	}
 }
 
-/* End of file theme_helpers.php */
-/* Location : ./application/helpers/theme_helpers.php */
+/* End of file themes_helper.php */
+/* Location : ./application/helpers/themes_helper.php */
