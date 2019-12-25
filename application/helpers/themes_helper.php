@@ -25,10 +25,9 @@ if (!function_exists('active_theme'))
 	 * Active Theme
 	 * 
 	 * @param  string $module module name
-	 * @param  string $return array|object|value
 	 * @return string
 	 */
-	function active_theme($module, $return = 'value')
+	function active_theme($module)
 	{
 		if ($module == 'installation')
 		{
@@ -36,45 +35,16 @@ if (!function_exists('active_theme'))
 		}
 		else
 		{
-			if (db_has_table('setting'))
+			$config = read_config_file();
+
+			if (array_key_exists('active_theme', $config) AND array_key_exists($module, $config['active_theme']))
 			{
-				$active_theme = get_instance()->db->get_where('setting', array('group' => 'theme', 'name' => $module));
-				if ($active_theme->num_rows()> 0)
-				{
-					switch ($return)
-					{
-						case 'array':
-							return $active_theme->row_array();
-						break;
-
-						case 'object':
-							return $active_theme->row();
-						break;
-						
-						default:
-							if (!empty($active_theme->row()->value)) 
-							{
-								/* active theme */
-								return $active_theme->row()->value;
-							}
-							else
-							{
-								/* default theme */
-								return 'default';
-							}
-						break;
-					}
-				}
-				else
-				{
-					get_instance()->db->insert('setting', array(
-						'group' => 'theme',
-						'name' => $module,
-						'value' => 'default'
-					));
-
-					return 'default';
-				}
+				return $config['active_theme'][$module];
+			}
+			else
+			{
+				write_config_file(array('active_theme' => array($module => 'default')), $config);
+				return 'default';
 			}
 		}
 	}
