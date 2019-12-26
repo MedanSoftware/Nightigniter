@@ -58,7 +58,11 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database', 'upload', 'form_validation', 'session', 'user_agent');
+$autoload['libraries'] = array(
+	'form_validation', 'session', 'user_agent',
+
+	'curl', 'template'
+);
 
 /*
 | -------------------------------------------------------------------
@@ -79,7 +83,7 @@ $autoload['libraries'] = array('database', 'upload', 'form_validation', 'session
 |	$autoload['drivers'] = array('cache' => 'cch');
 |
 */
-$autoload['drivers'] = array('template_engine');
+$autoload['drivers'] = array('cache', 'template_engine');
 
 /*
 | -------------------------------------------------------------------
@@ -89,7 +93,11 @@ $autoload['drivers'] = array('template_engine');
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('cookie', 'date', 'email', 'file', 'html', 'inflector', 'language', 'security', 'string', 'text', 'url');
+$autoload['helper'] = array(
+	'cookie', 'date', 'directory', 'email', 'file', 'html', 'inflector', 'language', 'security', 'string', 'text', 'url',
+
+	'application', 'database', 'hmvc', 'themes'
+);
 
 /*
 | -------------------------------------------------------------------
