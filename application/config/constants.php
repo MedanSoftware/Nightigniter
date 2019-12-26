@@ -131,6 +131,13 @@ defined('THEMES_PATH') or define('THEMES_PATH', FCPATH.'assets'.DIRECTORY_SEPARA
 
 /*
 |--------------------------------------------------------------------------
+| Eloquent Model Locations
+|--------------------------------------------------------------------------
+*/
+defined('ELOQUENT_MODEL_LOCATIONS') or define('ELOQUENT_MODEL_LOCATIONS', array());
+
+/*
+|--------------------------------------------------------------------------
 | Display Debug backtrace
 |--------------------------------------------------------------------------
 |
