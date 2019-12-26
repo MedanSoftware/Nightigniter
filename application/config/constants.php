@@ -95,7 +95,7 @@ if (!file_exists($database_config = APPPATH.'config/'.ENVIRONMENT.'/database.php
 
 include($database_config);
 
-defined('TABLE_PREFIX') or define('TABLE_PREFIX',(isset($db[ACTIVE_DATABASE_GROUP]))?$db[ACTIVE_DATABASE_GROUP]['dbprefix']:APP_INFO['name'].'_');
+defined('TABLE_PREFIX') or define('TABLE_PREFIX',(isset($db[ACTIVE_DATABASE_GROUP]))?$db[ACTIVE_DATABASE_GROUP]['dbprefix']:str_replace(' ', '_', APP_INFO['name']).'_');
 
 /*
 |--------------------------------------------------------------------------
