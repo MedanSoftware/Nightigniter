@@ -69,6 +69,18 @@ $hook['pre_system'] = array(
 		'function' => 'environment',
 		'filename' => 'booting/Application.php',
 		'filepath' => 'hooks'
+	),
+	array(
+		'class'    => 'Database',
+		'function' => 'connection',
+		'filename' => 'booting/Database.php',
+		'filepath' => 'hooks'
+	),
+	array(
+		'class'    => 'Database',
+		'function' => 'models',
+		'filename' => 'booting/Database.php',
+		'filepath' => 'hooks'
 	)
 );
 
