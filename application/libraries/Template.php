@@ -16,6 +16,26 @@ class Template
 	}
 
 	/**
+	* Installation template
+	* 
+	* @param  string $page
+	* @param  array  $content_data
+	*/
+	public function installation($page = null, $content_data = array())
+	{
+		$this->ci->template_engine->initialize(array(
+			'view_paths' => array(
+				THEMES_PATH.'/installation/views' => THEMES_PATH.'/installation/views'
+			),
+			'adapter' => 'twig'
+		));
+
+		$data['themes']['uri'] = base_url(backslash_to_slash(str_replace(FCPATH, '', THEMES_PATH).'/installation/'));
+		$data['themes']['assets_uri'] = base_url(backslash_to_slash(str_replace(FCPATH, '', ASSETS_PATH)));
+		$this->ci->template_engine->render($page, array_merge($content_data, $data));
+	}
+
+	/**
 	* Admin template
 	* 
 	* @param  string $page
@@ -29,7 +49,7 @@ class Template
 			),
 			'adapter' => 'twig'
 		));
-		
+
 		$data['themes']['uri'] = base_url(backslash_to_slash(str_replace(FCPATH, '', THEMES_PATH).'/admin/'.active_theme('admin')));
 		$data['themes']['assets_uri'] = base_url(backslash_to_slash(str_replace(FCPATH, '', ASSETS_PATH)));
 		$this->ci->template_engine->render($page, array_merge($content_data, $data));
