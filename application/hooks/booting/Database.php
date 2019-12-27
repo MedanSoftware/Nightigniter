@@ -6,6 +6,8 @@
  * @author Agung Dirgantara <agungmasda29@gmail.com>
  */
 
+namespace Booting;
+
 class Database
 {
 	/**

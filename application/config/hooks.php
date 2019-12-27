@@ -23,49 +23,49 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 $hook['pre_system'] = array(
 	array(
-		'class'    => 'Application',
+		'class'    => 'Booting\Application',
 		'function' => 'htaccess',
 		'filename' => 'booting/Application.php',
 		'filepath' => 'hooks'
 	),
 	array(
-		'class'    => 'Application',
+		'class'    => 'Booting\Application',
 		'function' => 'config_files',
 		'filename' => 'booting/Application.php',
 		'filepath' => 'hooks'
 	),
 	array(
-		'class'    => 'Application',
+		'class'    => 'Booting\Application',
 		'function' => 'site_path',
 		'filename' => 'booting/Application.php',
 		'filepath' => 'hooks'
 	),
 	array(
-		'class'    => 'Application',
+		'class'    => 'Booting\Application',
 		'function' => 'assets_path',
 		'filename' => 'booting/Application.php',
 		'filepath' => 'hooks'
 	),
 	array(
-		'class'    => 'Application',
+		'class'    => 'Booting\Application',
 		'function' => 'ssl_cert_path',
 		'filename' => 'booting/Application.php',
 		'filepath' => 'hooks'
 	),
 	array(
-		'class'    => 'Application',
+		'class'    => 'Booting\Application',
 		'function' => 'site_data_folder',
 		'filename' => 'booting/Application.php',
 		'filepath' => 'hooks'
 	),
 	array(
-		'class'    => 'Application',
+		'class'    => 'Booting\Application',
 		'function' => 'site_url',
 		'filename' => 'booting/Application.php',
 		'filepath' => 'hooks'
 	),
 	array(
-		'class'    => 'Application',
+		'class'    => 'Booting\Application',
 		'function' => 'environment',
 		'filename' => 'booting/Application.php',
 		'filepath' => 'hooks'
@@ -94,13 +94,13 @@ $hook['pre_system'] = array(
  */
 $hook['pre_controller'] = array(
 	array(
-		'class'    => 'Application',
+		'class'    => 'Booting\Application',
 		'function' => 'language',
 		'filename' => 'booting/Application.php',
 		'filepath' => 'hooks'
 	),
 	array(
-		'class'    => 'Application',
+		'class'    => 'Booting\Application',
 		'function' => 'themes',
 		'filename' => 'booting/Application.php',
 		'filepath' => 'hooks'
