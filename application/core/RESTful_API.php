@@ -18,6 +18,7 @@ class RESTful_API extends REST_Controller
 		parent::__construct();
 		$this->config->set_item('compress_output',TRUE);
 		$this->form_validation->set_data($this->{$this->request->method}());
+		$this->lang->load(array('restful_api'));
 	}
 }
 
