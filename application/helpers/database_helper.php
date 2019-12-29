@@ -144,9 +144,14 @@ if (!function_exists('db_install_tables'))
 						{
 							$dbforge->add_field($attributes['fields']);
 
-							foreach ($attributes['keys'] as $table_key)
+							foreach ($attributes['primary_keys'] as $table_key)
 							{
 								$dbforge->add_key($table_key, TRUE);
+							}
+
+							foreach ($attributes['keys'] as $table_key)
+							{
+								$dbforge->add_key($table_key);
 							}
 
 							($dbforge->create_table($table))?array_push($installation_done, $table):array_push($installation_fail, $table);
@@ -181,11 +186,6 @@ if (!function_exists('db_install_tables'))
 				 */
 				get_instance()->load->model($data,'_install_tables');
 
-				/**
-				 * remove __constructor from methods
-				 */
-				array_shift(get_instance()->_install_tables->tables);
-
 				foreach (get_instance()->_install_tables->tables as $table)
 				{
 					$attributes = get_instance()->_install_tables->$table();
@@ -196,9 +196,14 @@ if (!function_exists('db_install_tables'))
 					{
 						$dbforge->add_field($attributes['fields']);
 
-						foreach ($attributes['keys'] as $table_key)
+						foreach ($attributes['primary_keys'] as $table_key)
 						{
 							$dbforge->add_key($table_key, TRUE);
+						}
+
+						foreach ($attributes['keys'] as $table_key)
+						{
+							$dbforge->add_key($table_key);
 						}
 
 						($dbforge->create_table($table))?array_push($installation_done, $table):array_push($installation_fail, $table);
@@ -238,9 +243,15 @@ if (!function_exists('db_install_tables'))
 						if (!$db->table_exists($table))
 						{
 							$dbforge->add_field($attributes['fields']);
-							foreach ($attributes['keys'] as $table_key)
+
+							foreach ($attributes['primary_keys'] as $table_key)
 							{
 								$dbforge->add_key($table_key, TRUE);
+							}
+
+							foreach ($attributes['keys'] as $table_key)
+							{
+								$dbforge->add_key($table_key);
 							}
 
 							($dbforge->create_table($table))?array_push($installation_done, $table):array_push($installation_fail, $table);
@@ -251,6 +262,7 @@ if (!function_exists('db_install_tables'))
 						else
 						{
 							$diff_fields = array_diff(array_keys($attributes['fields']), $db->list_fields($table)); // check diff fields
+
 							if ($diff_fields)
 							{
 								$fields = array_intersect_key($attributes['fields'],array_flip($diff_fields)); // get new fields
@@ -269,7 +281,7 @@ if (!function_exists('db_install_tables'))
 			break;
 
 			default:
-				log_message('error','invalid option source in database_helper.php');
+				log_message('error','invalid source option in database_helper.php');
 				return FALSE;
 			break;
 		}
