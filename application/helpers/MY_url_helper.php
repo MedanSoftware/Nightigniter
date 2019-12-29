@@ -6,6 +6,20 @@
  * @author Agung Dirgantara <agungmasda29@gmail.com>
  */
 
+if (!function_exists('api_url'))
+{
+	/**
+	 * API URL
+	 * 
+	 * @param  string $uri
+	 * @return string
+	 */
+	function api_url($uri = '')
+	{
+		return (!isset(APP_CONFIG['api_url']))?base_url('api/'.$uri):APP_CONFIG['api_url'].'/'.$uri;
+	}
+}
+
 if (!function_exists('get_http_build_query'))
 {
 	/**
