@@ -73,6 +73,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group   = ACTIVE_DATABASE_GROUP;
 $query_builder = TRUE;
 
+/**
+ * Do not modify this configuration
+ * 
+ * @var array
+ */
 $db = array(
 	'system' => array(
 		'dsn'       => '',
@@ -81,7 +86,7 @@ $db = array(
 		'password'  => '',
 		'database'  => APPPATH.'system.db',
 		'dbdriver'  => 'sqlite3',
-		'dbprefix'  => APP_INFO['name'].'_',
+		'dbprefix'  => strtolower(str_replace(' ', '_', APP_INFO['name'].'_')),
 		'pconnect'  => FALSE,
 		'db_debug'  => (ENVIRONMENT !== 'production'),
 		'cache_on'  => FALSE,
@@ -102,7 +107,7 @@ $db = array(
 		'password'  => '',
 		'database'  => APPPATH.'default.db',
 		'dbdriver'  => 'sqlite3',
-		'dbprefix'  => APP_INFO['name'].'_',
+		'dbprefix'  => strtolower(str_replace(' ', '_', APP_INFO['name'].'_')),
 		'pconnect'  => FALSE,
 		'db_debug'  => (ENVIRONMENT !== 'production'),
 		'cache_on'  => FALSE,

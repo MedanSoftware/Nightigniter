@@ -378,7 +378,7 @@ $config['encryption_key'] = 'MedanSoftware';
 |
 */
 $config['sess_driver'] = 'files';
-$config['sess_cookie_name'] = 'night_igniter_session';
+$config['sess_cookie_name'] = strtolower(str_replace(' ', '_', APP_INFO['name'].'_')).'session';
 $config['sess_expiration'] = 7200;
 $config['sess_save_path'] = APPPATH.'cache'.DIRECTORY_SEPARATOR.'session';
 $config['sess_match_ip'] = FALSE;
