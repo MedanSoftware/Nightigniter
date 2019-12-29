@@ -228,7 +228,7 @@ if (!function_exists('db_install_tables'))
 					}
 				}
 
-				return array('tables' => get_instance()->_install_tables->tables,'done' => $installation_done, 'fail' => $installation_fail);
+				return array('tables' => array_values(get_instance()->_install_tables->tables), 'done' => $installation_done, 'fail' => $installation_fail);
 			break;
 
 			case 'json':
