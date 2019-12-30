@@ -10,6 +10,8 @@ class Template
 {
 	protected $ci;
 
+	protected $module;
+
 	public function __construct()
 	{
 		$this->ci =& get_instance();
@@ -73,6 +75,24 @@ class Template
 		$data['themes']['uri'] = base_url(backslash_to_slash(str_replace(FCPATH, '', THEMES_PATH).'/site/'.active_theme('site')));
 		$data['themes']['assets_uri'] = base_url(backslash_to_slash(str_replace(FCPATH, '', ASSETS_PATH)));
 		$this->ci->template_engine->render($page, array_merge($content_data, $data));
+	}
+
+	/**
+	 * Config file
+	 * 
+	 * @param  string $filename
+	 * @return array
+	 */
+	public function config_file($filename = 'theme.json', $module = null, $decode = true)
+	{
+		$config_file = THEMES_PATH.DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.active_theme($module).DIRECTORY_SEPARATOR.$filename;
+
+		if (file_exists($config_file))
+		{
+			$file_content = file_get_contents($config_file);
+
+			return ($decode)?json_decode($file_content):$file_content;
+		}
 	}
 }
 
