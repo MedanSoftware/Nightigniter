@@ -78,6 +78,32 @@ class Template
 	}
 
 	/**
+	 * Email template
+	 * 
+	 * @param  boolean $from_string
+	 * @param  string  $template
+	 * @param  array   $data
+	 */
+	public function email($from_string = false, $template = null, $data = array(), $return = false)
+	{
+		$this->ci->template_engine->initialize(array(
+			'view_paths' => array(
+				ASSETS_PATH.DIRECTORY_SEPARATOR.'email' => ASSETS_PATH.DIRECTORY_SEPARATOR.'email'
+			),
+			'adapter' => 'twig'
+		));
+
+		if ($from_string)
+		{
+			return $this->ci->template_engine->get_adapter()->get_engine()->parse_string($template, $data, $return);
+		}
+		else
+		{
+			return $this->ci->template_engine->get_adapter()->get_engine()->parse_file($template, $data, $return);
+		}
+	}
+
+	/**
 	 * Config file
 	 * 
 	 * @param  string $filename
