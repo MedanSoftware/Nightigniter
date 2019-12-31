@@ -71,13 +71,13 @@ $hook['pre_system'] = array(
 		'filepath' => 'hooks'
 	),
 	array(
-		'class'    => 'Database',
+		'class'    => 'Booting\Database',
 		'function' => 'connection',
 		'filename' => 'booting/Database.php',
 		'filepath' => 'hooks'
 	),
 	array(
-		'class'    => 'Database',
+		'class'    => 'Booting\Database',
 		'function' => 'models',
 		'filename' => 'booting/Database.php',
 		'filepath' => 'hooks'

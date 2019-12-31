@@ -52,10 +52,10 @@ class Database
 		}
 		else
 		{
-			if (class_exists('Illuminate\Database\Capsule\Manager'))
+			if (class_exists('\Illuminate\Database\Capsule\Manager'))
 			{
 				// initialize Eloquent ORM
-				$capsule = new Illuminate\Database\Capsule\Manager;
+				$capsule = new \Illuminate\Database\Capsule\Manager;
 
 				foreach ($db as $db_group => $config)
 				{
