@@ -23,6 +23,16 @@ class Template_Engine_Twig
 	}
 
 	/**
+	 * Get Engine
+	 * 
+	 * @return object
+	 */
+	public function get_engine()
+	{
+		return $this->engine;
+	}
+
+	/**
 	 * Render View
 	 * 
 	 * @param  string $page View File

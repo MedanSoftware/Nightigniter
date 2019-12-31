@@ -114,6 +114,16 @@ class Template_Engine extends CI_Driver_Library
 			$this->adapter = $adapter;
 		}
 
+		return $this;
+	}
+
+	/**
+	 * Get Adapter
+	 * 
+	 * @return object
+	 */
+	public function get_adapter()
+	{
 		return $this->{$this->adapter};
 	}
 
@@ -125,6 +135,20 @@ class Template_Engine extends CI_Driver_Library
 	public function set_view_paths(array $view_paths)
 	{
 		$this->view_paths = $view_paths;
+
+		return $this;
+	}
+
+	/**
+	 * Add View Paths
+	 * 
+	 * @param array $view_paths
+	 */
+	public function add_view_paths(array $view_paths)
+	{
+		array_merge($this->view_paths, $view_paths);
+
+		return $this;
 	}
 
 	/**
@@ -135,6 +159,8 @@ class Template_Engine extends CI_Driver_Library
 	public function set_cache_path(string $cache_path)
 	{
 		$this->cache_path = $cache_path;
+
+		return $this;
 	}
 
 	/**
@@ -163,7 +189,7 @@ class Template_Engine extends CI_Driver_Library
 	}
 
 	/**
-	 * render
+	 * Render template
 	 * 
 	 * @param  string  $page   [description]
 	 * @param  array   $data   [description]
