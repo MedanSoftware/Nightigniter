@@ -23,6 +23,7 @@ if (!function_exists('is_modular'))
 {
 	/**
 	 * Is modular
+	 * 
 	 * @return boolean
 	 */
 	function is_modular()

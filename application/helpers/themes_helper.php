@@ -43,7 +43,7 @@ if (!function_exists('active_theme'))
 			}
 			else
 			{
-				write_config_file(array('active_theme' => array($module => 'default')), $config);
+				write_config_file(array('active_theme' => array_merge(array($module => 'default'), $config['active_theme'])), $config);
 				return 'default';
 			}
 		}
