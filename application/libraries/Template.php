@@ -34,6 +34,8 @@ class Template
 
 		$data['themes']['uri'] = base_url(backslash_to_slash(str_replace(FCPATH, '', THEMES_PATH).'/installation/'));
 		$data['themes']['assets_uri'] = base_url(backslash_to_slash(str_replace(FCPATH, '', ASSETS_PATH)));
+		$data['themes']['memory_usage'] = $this->ci->benchmark->memory_usage();
+		$data['themes']['elapsed_time'] = $this->ci->benchmark->elapsed_time('total_execution_time_start', 'total_execution_time_end');
 		$this->ci->template_engine->render($page, array_merge($content_data, $data));
 	}
 
@@ -54,6 +56,8 @@ class Template
 
 		$data['themes']['uri'] = base_url(backslash_to_slash(str_replace(FCPATH, '', THEMES_PATH).'/admin/'.active_theme('admin')));
 		$data['themes']['assets_uri'] = base_url(backslash_to_slash(str_replace(FCPATH, '', ASSETS_PATH)));
+		$data['themes']['memory_usage'] = $this->ci->benchmark->memory_usage();
+		$data['themes']['elapsed_time'] = $this->ci->benchmark->elapsed_time('total_execution_time_start', 'total_execution_time_end');
 		$this->ci->template_engine->render($page, array_merge($content_data, $data));
 	}
 
@@ -74,6 +78,8 @@ class Template
 
 		$data['themes']['uri'] = base_url(backslash_to_slash(str_replace(FCPATH, '', THEMES_PATH).'/site/'.active_theme('site')));
 		$data['themes']['assets_uri'] = base_url(backslash_to_slash(str_replace(FCPATH, '', ASSETS_PATH)));
+		$data['themes']['memory_usage'] = $this->ci->benchmark->memory_usage();
+		$data['themes']['elapsed_time'] = $this->ci->benchmark->elapsed_time('total_execution_time_start', 'total_execution_time_end');
 		$this->ci->template_engine->render($page, array_merge($content_data, $data));
 	}
 
