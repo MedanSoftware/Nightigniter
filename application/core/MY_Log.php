@@ -194,11 +194,28 @@ class MY_Log extends CI_Log
 	 * 
 	 * @return array
 	 */
-	public function files()
+	public function files($only_name = true, $date_format = null)
 	{
-		return array_values(array_filter((empty(config_item('log_path')))?get_filenames(APPPATH.'logs'):get_filenames(config_item('log_path')),function($log){
-			return ($log !== 'index.html')?$log:false;
-		}));
+		return array_values(array_filter(array_map(function($log_file) use ($only_name, $date_format){
+			if(pathinfo($log_file)['extension'] == $this->file_extension())
+			{
+				if (filter_var($only_name, FILTER_VALIDATE_BOOLEAN))
+				{
+					if (!empty($date_format))
+					{
+						return nice_date(str_replace('log-','',pathinfo($log_file)['filename']), $date_format);
+					}
+					else
+					{
+						return str_replace('log-','',pathinfo($log_file)['filename']);
+					}
+				}
+				else
+				{
+					return $log_file;
+				}
+			}
+		},directory_map($this->path()))));
 	}
 }
 
