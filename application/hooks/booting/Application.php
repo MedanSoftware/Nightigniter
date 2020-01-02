@@ -186,14 +186,18 @@ class Application
 	 */
 	public function language()
 	{
-		get_instance()->load->helper(['cookie','directory']);
-		
 		$language = (!empty(get_cookie('language')))?get_cookie('language'):get_instance()->input->get('language');
 
-		if (preg_grep('/'.$language.'/',array_keys(directory_map(APPPATH.'language'))))
+		if (in_array($language, get_instance()->lang->available_languages()))
 		{
-			/* set current language to config */
-			get_instance()->config->set_item('language', $language);
+			get_instance()->input->set_cookie(array(
+				'name'   => 'language',
+				'value'  => $language,
+				'expire' => 86400,
+				'path'   => '/',
+				'secure' => FALSE
+			));
+
 			log_message('info','site language intialized : '.$language);
 		}
 	}
