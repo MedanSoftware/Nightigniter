@@ -6,8 +6,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |--------------------------------------------------------------------------
 */
 defined('APP_INFO') or define('APP_INFO', array(
-	'name' => 'Night Igniter',
-	'version' => '1.0',
+	'name' => 'Nightigniter',
+	'version' => '1.0.0',
 	'ci_version' => CI_VERSION
 ));
 
