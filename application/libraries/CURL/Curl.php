@@ -77,7 +77,7 @@ class Curl {
 	**/
 	function __construct() {
 		$_SERVER['HTTP_USER_AGENT'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36';
-		$this->cookie_file = dirname(__FILE__).DIRECTORY_SEPARATOR.'cookies.txt';
+		$this->cookie_file = APPPATH.'cache';
 		$this->user_agent = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : APP_INFO['APP_NAME'];
 	}
 
