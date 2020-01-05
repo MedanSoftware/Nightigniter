@@ -112,6 +112,14 @@ if (!function_exists('db_show_columns'))
 	}
 }
 
+if (!function_exists('table_count_data'))
+{
+	function table_count_data($table = null, $connection = ACTIVE_DATABASE_GROUP)
+	{
+		return $this->db->get($table)->num_rows();
+	}
+}
+
 if (!function_exists('db_install_tables'))
 {
 	/**
@@ -328,8 +336,6 @@ if (!function_exists('db_backup'))
 		$config['newline'] = (isset($config['newline']))?$config['newline']:"\n";
 		$config['foreign_key_checks'] = (isset($config['foreign_key_checks']))?filter_var($config['foreign_key_checks'],FILTER_VALIDATE_BOOLEAN):TRUE;
 
-		get_instance()->load->helper('download');
-
 		/**
 		 * load database
 		 * @var object
@@ -367,6 +373,7 @@ if (!function_exists('db_backup'))
 
 		if (filter_var($download,FILTER_VALIDATE_BOOLEAN))
 		{
+			get_instance()->load->helper('download');
 			force_download($backup_file, $database_backup);
 		}
 		else
