@@ -110,16 +110,35 @@ class Template
 	}
 
 	/**
-	 * Config file
+	 * Get config file
 	 * 
-	 * @param  string $filename
-	 * @return array
+	 * @param  string  $module
+	 * @param  string  $filename
+	 * @param  boolean $regex
+	 * @param  boolean $decode
+	 * @return mixed
 	 */
-	public function config_file($filename = 'theme.json', $module = null, $decode = true)
+	public function config_file($module = null, $filename = '/[t|T]heme\.json/', $regex = true, $decode = true)
 	{
-		$config_file = THEMES_PATH.DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.active_theme($module).DIRECTORY_SEPARATOR.$filename;
+		if ($regex)
+		{
+			$config_file = preg_grep($filename, directory_map(THEMES_PATH.DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.active_theme($module), 1, TRUE));
 
-		if (file_exists($config_file))
+			if ($config_file)
+			{
+				$config_file = array_shift($config_file);
+			}
+			else
+			{
+				$config_file = false;
+			}
+		}
+		else
+		{
+			$config_file = THEMES_PATH.DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.active_theme($module).DIRECTORY_SEPARATOR.$filename;
+		}
+
+		if ($config_file && file_exists($config_file))
 		{
 			$file_content = file_get_contents($config_file);
 
