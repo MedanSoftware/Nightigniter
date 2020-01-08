@@ -28,7 +28,7 @@ class Database
 		{
 			if (!is_cli())
 			{
-				if (!preg_match('/(installation)/', CURRENT_URL))
+				if (!preg_match('/(installation|api)\/(database|sign_in)/', CURRENT_URL))
 				{
 					if (!preg_match('/sqlite/', $db[ACTIVE_DATABASE_GROUP]['dbdriver']))
 					{
@@ -89,13 +89,15 @@ class Database
 
 				try
 				{
-					$capsule::connection(ACTIVE_DATABASE_GROUP)->getPdo();
+					$capsule->getConnection(ACTIVE_DATABASE_GROUP)->getPdo();
+					$GLOBALS['database_initialized'] = TRUE;
 				}
-				catch (Exception $e)
+				catch (\Exception $e)
 				{
+					$GLOBALS['database_initialized'] = FALSE;
 					if (!is_cli())
 					{
-						if (!preg_match('/(installation)/', CURRENT_URL))
+						if (!preg_match('/(installation|api)\/(database|sign_in)/', CURRENT_URL))
 						{
 							if (!preg_match('/sqlite/', $db[ACTIVE_DATABASE_GROUP]['dbdriver']))
 							{
@@ -149,11 +151,6 @@ class Database
 
 		foreach ($scan as $path)
 		{
-			if (basename($path) == 'installation')
-			{
-				continue;
-			}
-
 			if (preg_match('/\.php$/', $path))
 			{
 				require_once($path);
