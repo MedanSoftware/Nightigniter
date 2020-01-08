@@ -22,7 +22,6 @@ class MY_Exceptions extends CI_Exceptions
 	 * @param  string  $message     Error message
 	 * @param  string  $template    Template name
 	 * @param  integer $status_code (default : 500)
-	 * 
 	 * @return string  Error page output
 	 */
 	public function show_error($heading, $message, $template = 'error_general', $status_code = 500)
@@ -42,7 +41,7 @@ class MY_Exceptions extends CI_Exceptions
 				$module = $ci->router->default_controller;
 			}
 
-			$theme_config = $ci->template->config_file('theme.json', $module);
+			$theme_config = $ci->template->config_file($module);
 
 			if (isset($theme_config->error_view_path))
 			{
@@ -79,7 +78,6 @@ class MY_Exceptions extends CI_Exceptions
 	 * Show Exception
 	 * 
 	 * @param  object $exception exception class
-	 * 
 	 * @return string Error page output
 	 */
 	public function show_exception($exception)
@@ -99,7 +97,7 @@ class MY_Exceptions extends CI_Exceptions
 				$module = $ci->router->default_controller;
 			}
 
-			$theme_config = $ci->template->config_file('theme.json', $module);
+			$theme_config = $ci->template->config_file($module);
 
 			if (isset($theme_config->error_view_path))
 			{
@@ -136,7 +134,6 @@ class MY_Exceptions extends CI_Exceptions
 	 * @param  string 	$message  Error message
 	 * @param  string 	$filepath File path
 	 * @param  integer 	$line     Line number
-	 * 
 	 * @return void
 	 */
 	public function show_php_error($severity, $message, $filepath, $line)
@@ -161,7 +158,7 @@ class MY_Exceptions extends CI_Exceptions
 				$module = $ci->router->default_controller;
 			}
 
-			$theme_config = $ci->template->config_file('theme.json', $module);
+			$theme_config = $ci->template->config_file($module);
 
 			if (isset($theme_config->error_view_path))
 			{
