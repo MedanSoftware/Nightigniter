@@ -114,6 +114,13 @@ if (!function_exists('db_show_columns'))
 
 if (!function_exists('table_count_data'))
 {
+	/**
+	 * Count table data
+	 * 
+	 * @param  string $table
+	 * @param  string $connection
+	 * @return integer
+	 */
 	function table_count_data($table = null, $connection = ACTIVE_DATABASE_GROUP)
 	{
 		return $this->db->get($table)->num_rows();
