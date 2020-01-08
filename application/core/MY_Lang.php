@@ -9,13 +9,6 @@
 class MY_Lang extends MX_Lang
 {
 	/**
-	 * Application language file
-	 * 
-	 * @var string
-	 */
-	public $lang_file = 'application';
-
-	/**
 	 * Refactor: base language provided inside system/language
 	 * 
 	 * @var string
@@ -42,7 +35,6 @@ class MY_Lang extends MX_Lang
 	 * @param	bool	$return		Whether to return the loaded array of translations
 	 * @param 	bool	$add_suffix	Whether to add suffix to $langfile
 	 * @param 	string	$alt_path	Alternative path to look for the language file
-	 *
 	 * @return	void|string[]	Array containing translations, if $return is set to TRUE
 	 */
 	public function load($langfile, $idiom = '', $return = FALSE, $add_suffix = TRUE, $alt_path = '', $_module = '')
@@ -157,7 +149,7 @@ class MY_Lang extends MX_Lang
 	}
 
 	/**
-	 * available languages
+	 * Available languages
 	 * 
 	 * @return array
 	 */
