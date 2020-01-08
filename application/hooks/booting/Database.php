@@ -38,7 +38,7 @@ class Database
 					{
 						header('location:'.BASE_URL.'index.php/installation/database?code=sqlite_database');
 					}
-					
+
 					exit;
 				}
 			}
@@ -87,37 +87,44 @@ class Database
 				$capsule->setAsGlobal();
 				$capsule->bootEloquent();
 
-				try
+				if (!preg_match('/sqlite/', $db[ACTIVE_DATABASE_GROUP]['dbdriver']))
 				{
-					$capsule->getConnection(ACTIVE_DATABASE_GROUP)->getPdo();
-					$GLOBALS['database_initialized'] = TRUE;
-				}
-				catch (\Exception $e)
-				{
-					$GLOBALS['database_initialized'] = FALSE;
-					if (!is_cli())
+					try
 					{
-						if (!preg_match('/(installation|api)\/(database|sign_in)/', CURRENT_URL))
+						$capsule->getConnection(ACTIVE_DATABASE_GROUP)->getPdo();
+						$GLOBALS['database_initialized'] = TRUE;
+					}
+					catch (\Exception $e)
+					{
+						$GLOBALS['database_initialized'] = FALSE;
+						if (!is_cli())
 						{
-							if (!preg_match('/sqlite/', $db[ACTIVE_DATABASE_GROUP]['dbdriver']))
+							if (!preg_match('/(installation|api)\/(database|sign_in)/', CURRENT_URL))
 							{
-								header('location:'.BASE_URL.'index.php/installation/database?code=database_connection_failed');
+								if (!preg_match('/sqlite/', $db[ACTIVE_DATABASE_GROUP]['dbdriver']))
+								{
+									header('location:'.BASE_URL.'index.php/installation/database?code=database_connection_failed');
+								}
+								else
+								{
+									header('location:'.BASE_URL.'index.php/installation/database?code=sqlite_database');
+								}
+
+								exit;
 							}
-							else
-							{
-								header('location:'.BASE_URL.'index.php/installation/database?code=sqlite_database');
-							}
-							
-							exit;
+						}
+						else
+						{
+							echo 'Database connection failed'.PHP_EOL;
+							echo 'Please check active database group in : '.APP_CONFIG_FILE.PHP_EOL;
+							echo 'OR'.PHP_EOL;
+							echo 'Please check database config file in : '.DATABASE_CONFIG_FILE.PHP_EOL;
 						}
 					}
-					else
-					{
-						echo 'Database connection failed'.PHP_EOL;
-						echo 'Please check active database group in : '.APP_CONFIG_FILE.PHP_EOL;
-						echo 'OR'.PHP_EOL;
-						echo 'Please check database config file in : '.DATABASE_CONFIG_FILE.PHP_EOL;
-					}
+				}
+				else
+				{
+					$GLOBALS['database_initialized'] = TRUE;
 				}
 			}
 			else
