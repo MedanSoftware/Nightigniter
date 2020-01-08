@@ -18,11 +18,11 @@ class Template
 	}
 
 	/**
-	* Installation template
-	* 
-	* @param  string $page
-	* @param  array  $content_data
-	*/
+	 * Installation template
+	 * 
+	 * @param  string $page
+	 * @param  array  $content_data
+	 */
 	public function installation($page = null, $content_data = array())
 	{
 		$this->ci->template_engine->initialize(array(
@@ -40,11 +40,11 @@ class Template
 	}
 
 	/**
-	* Admin template
-	* 
-	* @param  string $page
-	* @param  array  $content_data
-	*/
+	 * Admin template
+	 * 
+	 * @param  string $page
+	 * @param  array  $content_data
+	 */
 	public function admin($page = null, $content_data = array())
 	{
 		$this->ci->template_engine->initialize(array(
