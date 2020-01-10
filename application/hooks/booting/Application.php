@@ -91,17 +91,17 @@ class Application
 	{
 		$data = $this->read_config();
 
-		$assets_uri = str_replace(FCPATH, '', ASSETS_PATH);
+		$assets_url = BASE_URL.str_replace(FCPATH, '', ASSETS_PATH);
 
 		if (!isset($data['assets']))
 		{
-			$this->write_config(array('assets' => ['sys' => ASSETS_PATH, 'uri' => $assets_uri]), $data);
+			$this->write_config(array('assets' => ['sys' => ASSETS_PATH, 'url' => $assets_url]), $data);
 		}
 		else
 		{
 			if ($data['assets']['sys'] !== ASSETS_PATH)
 			{
-				$this->write_config(array('assets' => ['sys' => ASSETS_PATH, 'uri' => $assets_uri]), $data);
+				$this->write_config(array('assets' => ['sys' => ASSETS_PATH, 'url' => $assets_url]), $data);
 			}
 		}
 	}
