@@ -32,6 +32,8 @@ class MY_Exceptions extends CI_Exceptions
 
 			$ci =& get_instance();
 
+			$ci->load->library('template');
+
 			if (!empty($ci->router->fetch_module()))
 			{
 				$module = ($ci->router->fetch_module() !== 'api')?$ci->router->fetch_module():$ci->router->default_controller;
@@ -87,6 +89,8 @@ class MY_Exceptions extends CI_Exceptions
 			$module = null;
 
 			$ci =& get_instance();
+
+			$ci->load->library('template');
 
 			if (!empty($ci->router->fetch_module()))
 			{
@@ -144,6 +148,7 @@ class MY_Exceptions extends CI_Exceptions
 
 			$ci =& get_instance();
 
+			$ci->load->library('template');
 
 			if (!empty($ci->router->fetch_module()))
 			{
