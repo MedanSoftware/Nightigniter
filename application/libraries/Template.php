@@ -120,6 +120,8 @@ class Template
 	 */
 	public function config_file($module = null, $filename = '/[t|T]heme\.json/', $regex = true, $decode = true)
 	{
+		$path = THEMES_PATH.DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.active_theme($module).DIRECTORY_SEPARATOR;
+
 		if ($regex)
 		{
 			$config_file = preg_grep($filename, directory_map(THEMES_PATH.DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.active_theme($module), 1, TRUE));
@@ -135,12 +137,12 @@ class Template
 		}
 		else
 		{
-			$config_file = THEMES_PATH.DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.active_theme($module).DIRECTORY_SEPARATOR.$filename;
+			$config_file = $filename;
 		}
 
-		if ($config_file && file_exists($config_file))
+		if ($config_file && file_exists($path.$config_file))
 		{
-			$file_content = file_get_contents($config_file);
+			$file_content = file_get_contents($path.$config_file);
 
 			return ($decode)?json_decode($file_content):$file_content;
 		}
