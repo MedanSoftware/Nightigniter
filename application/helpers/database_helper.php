@@ -17,7 +17,7 @@ if (!function_exists('db_version'))
 	function db_version($connection = ACTIVE_DATABASE_GROUP)
 	{
 		$db = get_instance()->load->database($connection ,TRUE);
-		return $db->db->version();
+		return $db->version();
 	}
 }
 
