@@ -26,10 +26,10 @@ if (!function_exists('write_config_file'))
 	 * 
 	 * @param  array   $data
 	 * @param  array   $old_data
-	 * @param  string  $file
+	 * @param  string  $config_file
 	 * @param  boolean $merge_data
 	 */
-	function write_config_file($data = array(), $old_data = array(), $file = APP_CONFIG_FILE, $merge_data = true)
+	function write_config_file($data = array(), $old_data = array(), $config_file = APP_CONFIG_FILE, $merge_data = true)
 	{
 		$content = $data;
 
@@ -41,7 +41,7 @@ if (!function_exists('write_config_file'))
 			}
 		}
 
-		return file_put_contents($file, json_encode($content, JSON_PRETTY_PRINT));
+		return file_put_contents($config_file, json_encode($content, JSON_PRETTY_PRINT));
 	}
 }
 

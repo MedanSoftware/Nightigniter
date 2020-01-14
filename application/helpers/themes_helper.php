@@ -54,5 +54,6 @@ if (!function_exists('active_theme'))
 		}
 	}
 }
+
 /* End of file themes_helper.php */
 /* Location : ./application/helpers/themes_helper.php */
