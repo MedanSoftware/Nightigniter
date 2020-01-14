@@ -6,11 +6,22 @@
  * @author Agung Dirgantara <agungmasda29@gmail.com>
  */
 
-class MY_Model extends CI_Model
+namespace Nightigniter;
+
+class MY_Model extends \CI_Model
 {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->database(ACTIVE_DATABASE_GROUP);
+	}
+
+	/**
+	 * Set database
+	 */
+	public function set_db($db_group = ACTIVE_DATABASE_GROUP)
+	{
+		$this->db = $this->load->database($db_group, TRUE);
 	}
 
 	/**
