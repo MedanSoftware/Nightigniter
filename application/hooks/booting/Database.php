@@ -140,6 +140,8 @@ class Database
 	 */
 	public function models()
 	{
+		require_once(APPPATH.'core/Eloquent_Model.php');
+
 		foreach (ELOQUENT_MODEL_LOCATIONS as $location)
 		{
 			$this->require_eloquent_models($location);
