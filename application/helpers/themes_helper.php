@@ -37,7 +37,12 @@ if (!function_exists('active_theme'))
 		{
 			$config = read_config_file();
 
-			if (array_key_exists('active_theme', $config) AND array_key_exists($module, $config['active_theme']))
+			if (!isset($config['active_theme']))
+			{
+				$config['active_theme'] = array();
+			}
+
+			if (array_key_exists($module, $config['active_theme']))
 			{
 				return $config['active_theme'][$module];
 			}
@@ -49,6 +54,5 @@ if (!function_exists('active_theme'))
 		}
 	}
 }
-
 /* End of file themes_helper.php */
 /* Location : ./application/helpers/themes_helper.php */
