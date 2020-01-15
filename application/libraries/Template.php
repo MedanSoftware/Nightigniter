@@ -32,7 +32,7 @@ class Template
 			'adapter' => 'twig'
 		));
 
-		$data['themes']['uri'] = base_url(backslash_to_slash(str_replace(FCPATH, '', THEMES_PATH).'/installation/'));
+		$data['themes']['url'] = base_url(backslash_to_slash(str_replace(FCPATH, '', THEMES_PATH).'/installation/'));
 		$data['themes']['assets_url'] = (isset(APP_CONFIG['assets']))?APP_CONFIG['assets']['url']:base_url(backslash_to_slash(str_replace(FCPATH, '', ASSETS_PATH)));
 		$data['themes']['memory_usage'] = $this->ci->benchmark->memory_usage();
 		$data['themes']['elapsed_time'] = $this->ci->benchmark->elapsed_time('total_execution_time_start', 'total_execution_time_end');
@@ -54,7 +54,7 @@ class Template
 			'adapter' => 'twig'
 		));
 
-		$data['themes']['uri'] = base_url(backslash_to_slash(str_replace(FCPATH, '', THEMES_PATH).'/user/'.active_theme('user')));
+		$data['themes']['url'] = base_url(backslash_to_slash(str_replace(FCPATH, '', THEMES_PATH).'/user/'.active_theme('user')));
 		$data['themes']['assets_url'] = (isset(APP_CONFIG['assets']))?APP_CONFIG['assets']['url']:base_url(backslash_to_slash(str_replace(FCPATH, '', ASSETS_PATH)));
 		$data['themes']['memory_usage'] = $this->ci->benchmark->memory_usage();
 		$data['themes']['elapsed_time'] = $this->ci->benchmark->elapsed_time('total_execution_time_start', 'total_execution_time_end');
@@ -76,7 +76,7 @@ class Template
 			'adapter' => 'twig'
 		));
 
-		$data['themes']['uri'] = base_url(backslash_to_slash(str_replace(FCPATH, '', THEMES_PATH).'/site/'.active_theme('site')));
+		$data['themes']['url'] = base_url(backslash_to_slash(str_replace(FCPATH, '', THEMES_PATH).'/site/'.active_theme('site')));
 		$data['themes']['assets_url'] = (isset(APP_CONFIG['assets']))?APP_CONFIG['assets']['url']:base_url(backslash_to_slash(str_replace(FCPATH, '', ASSETS_PATH)));
 		$data['themes']['memory_usage'] = $this->ci->benchmark->memory_usage();
 		$data['themes']['elapsed_time'] = $this->ci->benchmark->elapsed_time('total_execution_time_start', 'total_execution_time_end');
