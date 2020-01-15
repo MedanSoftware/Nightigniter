@@ -15,7 +15,7 @@ class Database
 	 */
 	public function connection()
 	{
-		log_message('info','check the database connection in from Hook Booting');
+		log_message('info','Check the database connection in from hook');
 
 		if (!file_exists($database_config = APPPATH.'config/'.ENVIRONMENT.'/database.php') && !file_exists($database_config = APPPATH.'config/database.php'))
 		{
@@ -32,10 +32,12 @@ class Database
 				{
 					if (!preg_match('/sqlite/', $db[ACTIVE_DATABASE_GROUP]['dbdriver']))
 					{
+						log_message('error','Database connection failed');
 						header('location:'.BASE_URL.'index.php/installation/database?code=database_connection_failed');
 					}
 					else
 					{
+						log_message('info','Initialize SQLITE database');
 						header('location:'.BASE_URL.'index.php/installation/database?code=sqlite_database');
 					}
 
@@ -44,6 +46,8 @@ class Database
 			}
 			else
 			{
+				log_message('error','Database connection failed');
+
 				echo 'Database connection failed'.PHP_EOL;
 				echo 'Please check active database group in : '.APP_CONFIG_FILE.PHP_EOL;
 				echo 'OR'.PHP_EOL;
@@ -93,20 +97,25 @@ class Database
 					{
 						$capsule->getConnection(ACTIVE_DATABASE_GROUP)->getPdo();
 						$GLOBALS['database_initialized'] = TRUE;
+
+						log_message('info','Database connection success');
 					}
 					catch (\Exception $e)
 					{
 						$GLOBALS['database_initialized'] = FALSE;
+
 						if (!is_cli())
 						{
 							if (!preg_match('/(installation|api)\/(database|sign_in)/', CURRENT_URL))
 							{
 								if (!preg_match('/sqlite/', $db[ACTIVE_DATABASE_GROUP]['dbdriver']))
 								{
+									log_message('error','Database connection failed');
 									header('location:'.BASE_URL.'index.php/installation/database?code=database_connection_failed');
 								}
 								else
 								{
+									log_message('info','Initialize database connection');
 									header('location:'.BASE_URL.'index.php/installation/database?code=sqlite_database');
 								}
 
@@ -115,6 +124,8 @@ class Database
 						}
 						else
 						{
+							log_message('error','Database connection failed');
+
 							echo 'Database connection failed'.PHP_EOL;
 							echo 'Please check active database group in : '.APP_CONFIG_FILE.PHP_EOL;
 							echo 'OR'.PHP_EOL;
@@ -125,6 +136,7 @@ class Database
 				else
 				{
 					$GLOBALS['database_initialized'] = TRUE;
+					log_message('info','Database using SQLITE');
 				}
 			}
 			else
@@ -146,6 +158,8 @@ class Database
 		{
 			$this->require_eloquent_models($location);
 		}
+
+		log_message('info','Load eloquent model');
 	}
 
 	/**

@@ -37,7 +37,7 @@ class Application
 			$content .= "#--------------------------------------------------------------#\n";
 
 			file_put_contents(FCPATH.'/.htaccess',$content);
-			log_message('info','application .htaccess file generated');
+			log_message('info','Application .htaccess file generated');
 		}
 	}
 
@@ -140,7 +140,7 @@ class Application
 			(!is_dir(SITE_DATA_PATH.$SD))?mkdir(SITE_DATA_PATH.$SD ,0777 ,TRUE):FALSE;
 
 			$this->write_config(array('site_data_folder' => $SD), $data);
-			log_message('info','site data folder intialized');
+			log_message('info','Site data folder intialized');
 		}
 	}
 
@@ -171,13 +171,13 @@ class Application
 		if (!isset($data['environment']))
 		{
 			$this->write_config(array('environment' => ENVIRONMENT), $data);
-			log_message('info','application environment intialized');
+			log_message('info','Application environment intialized');
 		}
 		else
 		{
 			if ($data['environment'] !== ENVIRONMENT)
 			{
-				log_message('info','application environment changed from : '.APP_CONFIG['environment'].' to '.ENVIRONMENT);
+				log_message('info','Application environment changed from : '.APP_CONFIG['environment'].' to '.ENVIRONMENT);
 				$this->write_config(array('environment' => ENVIRONMENT), $data);
 			}
 		}
@@ -202,7 +202,7 @@ class Application
 				'secure' => FALSE
 			));
 
-			log_message('info','site language intialized : '.$language);
+			log_message('info','Site language intialized : '.$language);
 		}
 	}
 
@@ -248,6 +248,7 @@ class Application
 		}
 
 		$GLOBALS['module_themes'] = $data;
+		log_message('info','Themes loaded from hook');
 	}
 
 	/**
