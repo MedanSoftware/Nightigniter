@@ -19,6 +19,19 @@ if (!function_exists('amp_html'))
 	}
 }
 
+if (!function_exists('is_module_has_theme'))
+{
+	/**
+	 * Check is module has theme
+	 * 
+	 * @return boolean
+	 */
+	function is_module_has_theme()
+	{
+		return array_keys($GLOBALS['module_themes']);
+	}
+}
+
 if (!function_exists('active_theme'))
 {
 	/**
