@@ -17,14 +17,7 @@ if (!function_exists('valid_hostname'))
 	function valid_hostname($hostname = null)
 	{
 		$validator = new Zend\Validator\Hostname();
-
-		if (!$validator->isValid($hostname))
-	    {
-	    	get_instance()->form_validation->set_message('valid_hostname',lang('cv_invalid_value'));
-	    	return FALSE;
-	    }
-
-	    return TRUE;
+		return $validator->isValid($hostname);
 	}
 }
 
@@ -58,12 +51,9 @@ if (!function_exists('valid_image_url'))
 	    if (substr($headers[0], 9, 3) == 200)
 	    {
 	   	   	$size = getimagesize($url);
-	        $is_image =  (strtolower(substr($size['mime'], 0, 5)) == 'image' ? true : false);
-	        (!$is_image)?get_instance()->form_validation->set_message('valid_image_url',lang('cv_invalid_value')):FALSE;
-	        return $is_image;
+	        return (strtolower(substr($size['mime'], 0, 5)) == 'image' ? true : false);
 	    }
 
-	    get_instance()->form_validation->set_message('valid_image_url',lang('cv_invalid_value'));
 	    return FALSE;
 	}	
 }
