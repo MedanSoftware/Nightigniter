@@ -52,7 +52,7 @@ class MY_Exceptions extends CI_Exceptions
 				$data['heading']		= $heading;
 				$data['message'] 		= (is_cli()?"\t":"<p>").(is_array($message)?implode((is_cli()?"\n\t":"</p><p>"),$message):$message).(is_cli()?"":"</p>");
 
-				$view_engine = new CiMS\TemplateEngine\Twig(array(
+				$view_engine = new \Nightigniter\TemplateEngine\Twig(array(
 					THEMES_PATH.'/'.$module.'/'.active_theme($module).'/views' => THEMES_PATH.'/'.$module.'/'.active_theme($module).'/views'
 				), APPPATH.'cache');
 
@@ -107,7 +107,7 @@ class MY_Exceptions extends CI_Exceptions
 			{
 				$data['exception'] = $exception;
 
-				$view_engine = new CiMS\TemplateEngine\Twig(array(
+				$view_engine = new \Nightigniter\TemplateEngine\Twig(array(
 					THEMES_PATH.'/'.$module.'/'.active_theme($module).'/views' => THEMES_PATH.'/'.$module.'/'.active_theme($module).'/views'
 				), APPPATH.'cache');
 
@@ -181,7 +181,7 @@ class MY_Exceptions extends CI_Exceptions
 				$data['filepath'] = $filepath;
 				$data['line'] = $line;
 
-				$view_engine = new CiMS\TemplateEngine\Twig(array(
+				$view_engine = new \Nightigniter\TemplateEngine\Twig(array(
 					THEMES_PATH.'/'.$module.'/'.active_theme($module).'/views' => THEMES_PATH.'/'.$module.'/'.active_theme($module).'/views'
 				), APPPATH.'cache');
 
