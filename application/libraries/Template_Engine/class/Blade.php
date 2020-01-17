@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php
 /**
  * @package Codeigniter
  * @subpackage Blade 
@@ -6,7 +6,7 @@
  * @author Agung Dirgantara <agungmasda29@gmail.com>
  */
 
-namespace CiMS\TemplateEngine;
+namespace Nightigniter\TemplateEngine;
 
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Container\Container as ContainerInterface;

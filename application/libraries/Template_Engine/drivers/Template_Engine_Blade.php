@@ -49,7 +49,7 @@ class Template_Engine_Blade
 	 */
 	public function decorate($parent)
 	{
-		$this->engine = new CiMS\TemplateEngine\Blade($parent->view_paths, $parent->cache_path);
+		$this->engine = new \Nightigniter\TemplateEngine\Blade($parent->view_paths, $parent->cache_path);
 	}
 }
 
