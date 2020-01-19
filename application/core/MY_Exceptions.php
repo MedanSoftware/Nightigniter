@@ -154,10 +154,6 @@ class MY_Exceptions extends CI_Exceptions
 			{
 				$module = ($ci->router->fetch_module() !== 'api')?$ci->router->fetch_module():$ci->router->default_controller;
 			}
-			elseif (!empty($ci->router->fetch_class()))
-			{
-				$module = ($ci->router->fetch_class() == 'installation')?$ci->router->default_controller:$ci->router->fetch_class();
-			}
 			else
 			{
 				$module = $ci->router->default_controller;
