@@ -139,8 +139,8 @@ if (!function_exists('db_install_tables'))
 	 */
 	function db_install_tables($source = 'model', $data, $connection = ACTIVE_DATABASE_GROUP)
 	{
-		$db = get_instance()->load->database($connection ,TRUE);
-		$dbforge = get_instance()->load->dbforge($db,TRUE);
+		$db = get_instance()->load->database($connection, TRUE);
+		$dbforge = get_instance()->load->dbforge($db, TRUE);
 
 		$installation_done = array();
 		$installation_fail = array();
@@ -196,9 +196,6 @@ if (!function_exists('db_install_tables'))
 			break;
 
 			case 'model':
-				/**
-				 * load model
-				 */
 				get_instance()->load->model($data,'_install_tables');
 
 				foreach (get_instance()->_install_tables->tables as $table)
@@ -248,6 +245,7 @@ if (!function_exists('db_install_tables'))
 
 			case 'json':
 				$data = (file_exists($data))?json_decode(file_get_contents($data),TRUE):array();
+
 				if (is_array($data) && !empty($data))
 				{
 					foreach ($data as $table => $attributes)
@@ -337,7 +335,7 @@ if (!function_exists('db_backup'))
 		$config['tables'] = (isset($config['tables']))?(array_diff($config['tables'], db_show_tables())<1)?$config['tables']:db_show_tables($database):array();
 		$config['ignore'] = (isset($config['ignore']))?(array_diff($config['ignore'], db_show_tables())<1)?$config['ignore']:db_show_tables($database):array();
 		$config['format'] = (isset($config['format']))?(in_array($config['format'], ['gzip','zip','txt']))?$config['format']:'zip':'zip';
-		$config['filename'] = (isset($config['filename']))?$config['filename']:NULL;
+		$config['filename'] = (isset($config['filename']))?$config['filename']:'backup';
 		$config['add_drop'] = (isset($config['add_drop']))?filter_var($config['add_drop'],FILTER_VALIDATE_BOOLEAN):TRUE;
 		$config['add_insert	'] = (isset($config['add_insert	']))?filter_var($config['add_insert	'],FILTER_VALIDATE_BOOLEAN):TRUE;
 		$config['newline'] = (isset($config['newline']))?$config['newline']:"\n";
@@ -347,7 +345,7 @@ if (!function_exists('db_backup'))
 		 * load database
 		 * @var object
 		 */
-		$database = get_instance()->load->database($database,TRUE);
+		$database = get_instance()->load->database($database, TRUE);
 
 		/**
 		 * load database utility
@@ -371,7 +369,7 @@ if (!function_exists('db_backup'))
 		 * database backup file name
 		 * @var string
 		 */
-		$backup_file = $database->database.'-'.nice_date(unix_to_human(time()),'Y-m-d').'.'.$config['format'];
+		$backup_file = $database->database.'-'.nice_date(unix_to_human(now()),'Y-m-d').'.'.$config['format'];
 
 		/**
 		 * write backup file
@@ -385,7 +383,7 @@ if (!function_exists('db_backup'))
 		}
 		else
 		{
-			return $backup_path.'/'.$backup_file;
+			return realpath($backup_path.'/'.$backup_file);
 		}
 	}
 }
