@@ -57,6 +57,8 @@ class MY_Model extends \CI_Model
 		{
 			return $this->db->list_fields($table);
 		}
+
+		return FALSE;
 	}
 
 	/**
@@ -72,6 +74,8 @@ class MY_Model extends \CI_Model
 		{
 			return $this->db->field_exists($field, $table);
 		}
+
+		return FALSE;
 	}
 }
 
