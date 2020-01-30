@@ -4,6 +4,14 @@ require_once(APPPATH.'third_party/MX/Loader.php');
 
 class MY_Loader extends MX_Loader
 {
+	/**
+	 * Load model
+	 * 
+	 * @param  mixed  	$model
+	 * @param  string 	$name
+	 * @param  boolean	$db_conn
+	 * @return object
+	 */
 	public function model($model, $name = '', $db_conn = FALSE)
 	{
 		if (empty($model))
@@ -98,7 +106,7 @@ class MY_Loader extends MX_Loader
 		}
 
 		$model = ucfirst($model);
-		if ( ! class_exists($model, FALSE))
+		if ( ! class_exists('Nightigniter\\'.$model, FALSE))
 		{
 			foreach ($this->_ci_model_paths as $mod_path)
 			{
