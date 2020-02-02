@@ -1,0 +1,10 @@
+{
+	"require": {
+		"nelexa/zip": "^3.1",
+		"ddeboer/imap": "^1.9",
+		"webklex/php-imap": "^0.0.3",
+		"erusev/parsedown": "^1.7",
+		"illuminate/database": "^5.8",
+		"zendframework/zend-validator": "^2.12"
+	}
+}
