@@ -61,7 +61,7 @@ $autoload['packages'] = array();
 $autoload['libraries'] = array(
 	'form_validation', 'session', 'user_agent',
 
-	'acl', 'curl', 'template'
+	'curl', 'template'
 );
 
 /*
@@ -96,7 +96,7 @@ $autoload['drivers'] = array('cache', 'template_engine');
 $autoload['helper'] = array(
 	'cookie', 'date', 'directory', 'email', 'file', 'html', 'inflector', 'language', 'security', 'string', 'text', 'url',
 
-	'application', 'database', 'hmvc', 'themes'
+	'acl', 'application', 'database', 'hmvc', 'query', 'themes'
 );
 
 /*
