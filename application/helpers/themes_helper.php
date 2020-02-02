@@ -19,6 +19,19 @@ if (!function_exists('amp_html'))
 	}
 }
 
+if (!function_exists('modules_has_theme'))
+{
+	/**
+	 * Get modules has theme
+	 * 
+	 * @return boolean
+	 */
+	function modules_has_theme()
+	{
+		return array_keys($GLOBALS['module_themes']);
+	}
+}
+
 if (!function_exists('is_module_has_theme'))
 {
 	/**
@@ -26,9 +39,9 @@ if (!function_exists('is_module_has_theme'))
 	 * 
 	 * @return boolean
 	 */
-	function is_module_has_theme()
+	function is_module_has_theme($module = null)
 	{
-		return array_keys($GLOBALS['module_themes']);
+		return (!empty($module))?in_array($module, array_keys($GLOBALS['module_themes'])):array_keys($GLOBALS['module_themes']);
 	}
 }
 
