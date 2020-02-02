@@ -64,6 +64,7 @@ if (!function_exists('db_show_create_table'))
 	function db_show_create_table($table, $connection = ACTIVE_DATABASE_GROUP)
 	{
 		$db = get_instance()->load->database($connection ,TRUE);
+
 		if (db_has_table($table, $connection))
 		{
 			return $db->query('SHOW CREATE TABLE '.TABLE_PREFIX.$table)->result()[0]->{'Create Table'};
@@ -86,6 +87,27 @@ if (!function_exists('db_show_tables'))
 	}
 }
 
+if (!function_exists('db_table_has_column'))
+{
+	/**
+	 * Database table has column
+	 * 
+	 * @param  string $table      Table Name
+	 * @param  string $field      Field Name
+	 * @param  string $connection Database Group Connection
+	 * @return array
+	 */
+	function db_table_has_column($table, $field, $connection = ACTIVE_DATABASE_GROUP)
+	{
+		$db = get_instance()->load->database($connection ,TRUE);
+
+		if (db_has_table($table, $connection))
+		{
+			return $db->field_exists($field, $table);
+		}
+	}
+}
+
 if (!function_exists('db_show_columns'))
 {
 	/**
@@ -98,6 +120,7 @@ if (!function_exists('db_show_columns'))
 	function db_show_columns($table, $field_data = false, $connection = ACTIVE_DATABASE_GROUP)
 	{
 		$db = get_instance()->load->database($connection ,TRUE);
+
 		if (db_has_table($table, $connection))
 		{
 			if (!filter_var($field_data,FILTER_VALIDATE_BOOLEAN))
