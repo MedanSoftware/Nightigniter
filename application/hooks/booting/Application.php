@@ -190,11 +190,12 @@ class Application
 	 */
 	public function language()
 	{
-		$language = (!empty(get_cookie('language')))?get_cookie('language'):get_instance()->input->get('language');
+		$ci =& get_instance();
+		$language = (!empty(get_cookie('language')))?get_cookie('language'):$ci->input->get('language');
 
-		if (in_array($language, get_instance()->lang->available_languages()))
+		if (in_array($language, $ci->lang->available_languages()))
 		{
-			get_instance()->input->set_cookie(array(
+			$ci->input->set_cookie(array(
 				'name'   => 'language',
 				'value'  => $language,
 				'expire' => 86400,
@@ -202,7 +203,12 @@ class Application
 				'secure' => FALSE
 			));
 
+			$ci->load->language('nightigniter', $language);
 			log_message('info','Site language intialized : '.$language);
+		}
+		else
+		{
+			$ci->load->language('nightigniter', $ci->lang->base_language);
 		}
 	}
 
