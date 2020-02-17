@@ -191,7 +191,19 @@ class Application
 	public function language()
 	{
 		$ci =& get_instance();
-		$language = (!empty(get_cookie('language')))?get_cookie('language'):$ci->input->get('language');
+
+		if (!empty($ci->input->get('language')) && in_array($ci->input->get('language'), $ci->lang->available_languages()))
+		{
+			$language = $ci->input->get('language');
+		}
+		elseif (!empty(get_cookie('language')))
+		{
+			$language = get_cookie('language');
+		}
+		else
+		{
+			$language = $ci->lang->base_language;
+		}
 
 		if (in_array($language, $ci->lang->available_languages()))
 		{
@@ -203,12 +215,14 @@ class Application
 				'secure' => FALSE
 			));
 
-			$ci->load->language('nightigniter', $language);
 			log_message('info','Site language intialized : '.$language);
 		}
-		else
+
+		$ci->load->language('nightigniter', $language);
+
+		if (!preg_match('/(installation)/', CURRENT_URL))
 		{
-			$ci->load->language('nightigniter', $ci->lang->base_language);
+			$ci->load->language('nightigniter_installation', $language);
 		}
 	}
 
