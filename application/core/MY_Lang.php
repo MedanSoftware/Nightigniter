@@ -113,6 +113,7 @@ class MY_Lang extends MX_Lang
 					{
 						include($package_path.'language/' . $this->base_language . '/' . $langfile);
 						$found = TRUE;
+						$idiom = $this->base_language;
 						log_message('info', 'Language file loaded: language/' . $idiom . '/' . $langfile.' - using default language:'.$this->base_language);
 						break;
 					}
@@ -122,7 +123,35 @@ class MY_Lang extends MX_Lang
 
 		if ($found !== TRUE)
 		{
-			show_error('Unable to load the requested language file: language/' . $idiom . '/' . $langfile);
+			$langfile_json = str_replace(['_lang', '.php'], ['','.json'], $langfile);
+
+			if (file_exists(ASSETS_PATH.'/language/'.$idiom.'/'.$langfile_json))
+			{
+				$found = TRUE;
+
+				if (valid_json(file_get_contents(ASSETS_PATH.'/language/'.$idiom.'/'.$langfile_json)))
+				{
+					foreach (json_decode(file_get_contents(ASSETS_PATH.'/language/'.$idiom.'/'.$langfile_json)) as $key => $value)
+					{
+						$lang[$key] = $value;
+					}
+				}
+			}
+			elseif (file_exists(ASSETS_PATH.'/language/'.$this->base_language.'/'.$langfile_json))
+			{
+				$found = TRUE;
+				$idiom = $this->base_language;
+
+				if (valid_json(file_get_contents(ASSETS_PATH.'/language/'.$this->base_language.'/'.$langfile_json)))
+				{
+					foreach (json_decode(file_get_contents(ASSETS_PATH.'/language/'.$this->base_language.'/'.$langfile_json)) as $key => $value)
+					{
+						$lang[$key] = $value;
+					}
+				}
+			}
+
+			log_message('error', 'Unable to load the requested language file: language/' . $idiom . '/' . $langfile);
 		}
 
 		if (!isset($lang) OR ! is_array($lang))
@@ -133,6 +162,7 @@ class MY_Lang extends MX_Lang
 			{
 				return array();
 			}
+
 			return;
 		}
 
