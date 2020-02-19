@@ -220,7 +220,7 @@ class Application
 
 		$ci->load->language('nightigniter', $language);
 
-		if (!preg_match('/(installation)/', CURRENT_URL))
+		if (preg_match('/(installation)/', CURRENT_URL))
 		{
 			$ci->load->language('nightigniter_installation', $language);
 		}
