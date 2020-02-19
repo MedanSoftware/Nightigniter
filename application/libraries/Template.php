@@ -6,6 +6,9 @@
  * @author Agung Dirgantara <agungmasda29@gmail.com>
 */
 
+require_once(APPPATH.'helpers/themes_helper.php');
+require_once(BASEPATH.'helpers/directory_helper.php');
+
 class Template
 {
 	protected $ci;
@@ -86,11 +89,13 @@ class Template
 	/**
 	 * Email template
 	 * 
-	 * @param  boolean $from_string
 	 * @param  string  $template
 	 * @param  array   $data
+	 * @param  boolean $from_string
+	 * @param  boolean $return
+	 * @return mixed
 	 */
-	public function email($from_string = false, $template = null, $data = array(), $return = false)
+	public function email($template = null, $data = array(), $from_string = false, $return = false)
 	{
 		$this->ci->template_engine->initialize(array(
 			'view_paths' => array(
@@ -124,7 +129,8 @@ class Template
 
 		if ($regex)
 		{
-			$config_file = preg_grep($filename, directory_map(THEMES_PATH.DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.active_theme($module), 1, TRUE));
+			$theme_path = directory_map(THEMES_PATH.DIRECTORY_SEPARATOR.$module.DIRECTORY_SEPARATOR.active_theme($module), TRUE, FALSE);
+			$config_file = preg_grep($filename, is_array($theme_path)?$theme_path:array());
 
 			if ($config_file)
 			{
