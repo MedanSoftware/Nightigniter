@@ -96,7 +96,7 @@ $autoload['drivers'] = array('cache', 'template_engine');
 $autoload['helper'] = array(
 	'cookie', 'date', 'directory', 'email', 'file', 'html', 'inflector', 'language', 'security', 'string', 'text', 'url',
 
-	'acl', 'application', 'database', 'hmvc', 'query', 'themes'
+	'acl', 'application', 'database', 'hmvc', 'query', 'themes', 'validation'
 );
 
 /*
