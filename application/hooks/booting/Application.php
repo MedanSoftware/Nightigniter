@@ -207,6 +207,8 @@ class Application
 
 		if (in_array($language, $ci->lang->available_languages()))
 		{
+
+			$ci->lang->set_current_language($language);
 			$ci->input->set_cookie(array(
 				'name'   => 'language',
 				'value'  => $language,
