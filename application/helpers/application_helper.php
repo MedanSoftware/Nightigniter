@@ -13,7 +13,7 @@ if (!function_exists('read_config_file'))
 	 *
 	 * @param  string $config_file
 	 */
-	function read_config_file($config_file = APP_CONFIG_FILE)
+	function read_config_file(string $config_file = APP_CONFIG_FILE)
 	{
 		return (file_exists($config_file))?json_decode(file_get_contents($config_file),TRUE):array();
 	}
@@ -29,7 +29,7 @@ if (!function_exists('write_config_file'))
 	 * @param  string  $config_file
 	 * @param  boolean $merge_data
 	 */
-	function write_config_file($data = array(), $old_data = array(), $config_file = APP_CONFIG_FILE, $merge_data = true)
+	function write_config_file(array $data = array(), array $old_data = array(), $config_file = APP_CONFIG_FILE, $merge_data = true)
 	{
 		$content = $data;
 
@@ -70,6 +70,36 @@ if (!function_exists('get_class_methods'))
 	}
 }
 
+if (!function_exists('has_nodeigniter'))
+{
+	/**
+	 * Has nodeigniter
+	 * 
+	 * @return boolean
+	 */
+	function has_nodeigniter()
+	{
+		return (isset(APP_CONFIG['nodeigniter']));
+	}
+}
+
+if (!function_exists('model'))
+{
+	/**
+	 * Model
+	 * 
+	 * @param  string $name
+	 * @return object
+	 */
+	function model($name)
+	{
+		$ci =& get_instance();
+		$ci->load->model($name);
+
+		return $ci->{$name};
+	}
+}
+
 if (!function_exists('parsedown'))
 {
 	/**
@@ -96,24 +126,21 @@ if (!function_exists('parsedown'))
 	}
 }
 
-if (!function_exists('ping_host'))
+if (!function_exists('unused_hostname'))
 {
 	/**
-	 * Ping host
+	 * Check is not used hostname
 	 * 
-	 * @param  string $host target host to ping
+	 * @param  string $hostname
 	 * @return boolean
 	 */
-	function ping_host($host = null)
+	function unused_hostname($hostname = null)
 	{
-		if (!empty($host))
+		if (!empty($hostname))
 		{
-			exec('ping '.$host, $output, $result);
-			get_instance()->form_validation->set_message('ping_host', lang('cv_has_been_used'));
+			exec('ping '.$hostname, $output, $result);
 			return ($result == 0);
 		}
-
-		get_instance()->form_validation->set_message('ping_host', lang('form_validation_required'));
 
 		return FALSE;
 	}
