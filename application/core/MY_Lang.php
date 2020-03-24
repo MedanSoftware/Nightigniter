@@ -15,6 +15,8 @@ class MY_Lang extends MX_Lang
 	 */
 	public $base_language = 'english';
 
+	public $current_language = 'english';
+
 	/**
 	 * Class constructor
 	 *
@@ -23,6 +25,16 @@ class MY_Lang extends MX_Lang
 	public function __construct()
 	{
 		parent::__construct();
+	}
+
+	public function set_current_language($language = '')
+	{
+		$this->current_language = $language;
+	}
+
+	public function get_current_language()
+	{
+		return $this->current_language;
 	}
 
 	// --------------------------------------------------------------------
@@ -39,6 +51,11 @@ class MY_Lang extends MX_Lang
 	 */
 	public function load($langfile, $idiom = '', $return = FALSE, $add_suffix = TRUE, $alt_path = '', $_module = '')
 	{
+		if (empty($idiom))
+		{
+			$idiom = $this->get_current_language();
+		}
+
 		if (is_array($langfile))
 		{
 			foreach ($langfile as $value)
