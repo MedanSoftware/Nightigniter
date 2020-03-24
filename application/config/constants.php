@@ -16,7 +16,7 @@ defined('APP_INFO') or define('APP_INFO', array(
 | HTTP REQUEST
 |--------------------------------------------------------------------------
 */
-if(isset($_SERVER['SERVER_PORT']))
+if (isset($_SERVER['SERVER_PORT']))
 {
 	/**
 	 * Dynamic Base URL
