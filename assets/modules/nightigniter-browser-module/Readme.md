@@ -1,0 +1,1 @@
+# Nightigniter Browser Module
